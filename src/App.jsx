@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { experience, menuItems, profile, projects, skills } from "./data";
 
 const dockItems = [
@@ -146,15 +146,51 @@ function PageHeader({ activePage, onBack }) {
 
 function PageShell({ activePage, onBack, children }) {
   const copy = pageCopy[activePage] ?? pageCopy.about;
+  const scrollRef = useRef(null);
+  const [scrollState, setScrollState] = useState({ top: 0, size: 38 });
+
+  useEffect(() => {
+    const node = scrollRef.current;
+    if (!node) return undefined;
+
+    const update = () => {
+      const { scrollTop, scrollHeight, clientHeight } = node;
+      const maxScroll = Math.max(scrollHeight - clientHeight, 1);
+      const contentHeight = Math.max(scrollHeight, 1);
+      const size = Math.max(18, (clientHeight / contentHeight) * 100);
+      const top = (scrollTop / maxScroll) * (100 - size);
+      setScrollState({ top, size });
+    };
+
+    update();
+    node.addEventListener("scroll", update, { passive: true });
+
+    const observer = new ResizeObserver(update);
+    observer.observe(node);
+
+    return () => {
+      node.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [activePage]);
 
   return (
     <div className="phone-page">
       <PageHeader activePage={activePage} onBack={onBack} />
-      <main className="page-scroll">
+      <main ref={scrollRef} className="page-scroll">
         <p className="page-kicker">{copy.kicker}</p>
         <h2>{copy.title}</h2>
         {children}
       </main>
+      <div className="scroll-rail" aria-hidden="true">
+        <span
+          className="scroll-rail__thumb"
+          style={{
+            top: `${scrollState.top}%`,
+            height: `${scrollState.size}%`,
+          }}
+        />
+      </div>
     </div>
   );
 }
