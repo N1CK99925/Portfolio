@@ -9,10 +9,10 @@ const dockItems = [
 ];
 
 const quickFacts = [
-  { title: "Waterloo CS", detail: "Undergraduate", glyph: "CS" },
-  { title: "A.I.", detail: "Specialization", glyph: "AI" },
-  { title: "Software Developer", detail: "Currently @ CGI", glyph: "DEV" },
-  { title: "Engineering", detail: "Full-stack projects", glyph: "</>" },
+  { title: "Bennett University", detail: "Undergraduate", glyph: "CS", tone: "lime" },
+  { title: "A.I. & Backend", detail: "Specialization", glyph: "AI & Backend", tone: "cyan" },
+  { title: "Software Developer", detail: "Currently @ Nowhere", glyph: "DEV", tone: "purple" },
+  { title: "Engineering", detail: "making stuff", glyph: "</>", tone: "amber" },
 ];
 
 const pageCopy = {
@@ -314,6 +314,7 @@ function PhoneFrame({ activePage, setActivePage }) {
   return (
     <div className="phone-shell" aria-label="Interactive phone portfolio">
       <div className="phone-bezel">
+        <div className="scanlines" aria-hidden="true" />
         <div className="phone-notch" aria-hidden="true" />
         <div className="phone-screen">
           {activePage === "home" ? (
@@ -333,14 +334,30 @@ function IntroPanel({ setActivePage }) {
       <p className="intro-kicker">{profile.name}</p>
       <h1>{profile.name.split(" ")[0]}'s Personal Portfolio</h1>
       <p className="intro-copy">{profile.mission}</p>
+      <div className="tag-row" aria-label="Portfolio tags">
+        <span className="tag lime">CS STUDENT</span>
+        <span className="tag cyan">AI / ML</span>
+        <span className="tag purple">BACKEND</span>
+        <span className="tag amber">BUILDER</span>
+      </div>
       <div className="quick-facts">
         {quickFacts.map((fact) => (
-          <button key={fact.title} type="button" onClick={() => setActivePage("about")}>
+          <button
+            key={fact.title}
+            className={`fact-${fact.tone}`}
+            type="button"
+            onClick={() => setActivePage("about")}
+          >
             <span>{fact.glyph}</span>
             <strong>{fact.title}</strong>
             <small>{fact.detail}</small>
           </button>
         ))}
+      </div>
+      <div className="status-line">
+        <span className="status-dot" aria-hidden="true" />
+        <strong>SYSTEM ONLINE</strong>
+        <span>Ready for new missions.</span>
       </div>
     </section>
   );
