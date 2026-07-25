@@ -124,7 +124,7 @@ const PROJECTS = [
     tags: ["Python", "FastAPI", "LangGraph", "LightRAG", "Neo4j"],
     link: "https://github.com/N1CK99925/LoreSpring",
     liveLink: "https://lorespring.vercel.app",
-    image: "https://picsum.photos/seed/lorespring/1600/900",
+    image: "/LoreSpring.png",
   },
   {
     title: "ARES",
@@ -395,9 +395,8 @@ export default function Home() {
 
                     {/* Content overlay */}
                     <div
-                      className={`absolute bottom-0 left-0 right-0 p-6 sm:p-10 ${
-                        isEven ? "sm:pr-[45%]" : "sm:pl-[45%]"
-                      }`}
+                      className={`absolute bottom-0 left-0 right-0 p-6 sm:p-10 ${isEven ? "sm:pr-[45%]" : "sm:pl-[45%]"
+                        }`}
                     >
                       <div className="mb-3 flex flex-wrap items-center gap-3">
                         <div className="flex gap-2">
