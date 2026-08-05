@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
+import loreSpringImage from "../assets/LoreSpring.png";
 import {
   ArrowUpRight,
   Envelope,
@@ -136,7 +137,7 @@ const PROJECTS = [
     tags: ["Python", "FastAPI", "LangGraph", "LightRAG", "Neo4j"],
     link: "https://github.com/N1CK99925/LoreSpring",
     liveLink: "https://lorespring.vercel.app",
-    image: "/LoreSpring.png",
+    image: loreSpringImage,
   },
   {
     title: "ARES",
@@ -548,13 +549,9 @@ function Marquee() {
 function Terminal() {
   const lines = [
     { prompt: true, text: "whoami", output: "harshit-batra" },
-    { prompt: true, text: "./engineer --focus", output: "ai-infra" },
-    {
-      prompt: true,
-      text: "./engineer --stack",
-      output: "python · go · fastapi · langgraph",
-    },
-    { prompt: true, text: "./engineer --status", output: "open-to-work", hot: true },
+    { prompt: true, text: "pwd", output: "~/ai-backend-engineer" },
+    { prompt: true, text: "ls projects", output: "lorespring · ares · lms" },
+    { prompt: true, text: "git status", output: "open to work", hot: true },
   ];
 
   return (
@@ -682,7 +679,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
               >
-                <MonoTag>whoami</MonoTag>
+                <MonoTag>ai / backend engineer</MonoTag>
               </motion.div>
 
               <motion.h1
@@ -712,8 +709,8 @@ export default function Home() {
                 }}
                 className="mt-7 max-w-md font-mono text-[13.5px] leading-relaxed text-ink/55"
               >
-                &gt; AI and Backend Engineer — reliable systems, intelligent
-                pipelines, production ML infrastructure.
+                Building production systems — agent orchestration, ML
+                infrastructure, and backend services.
               </motion.p>
 
               <motion.div
@@ -730,7 +727,7 @@ export default function Home() {
                   Get in touch
                 </Pill>
                 <Pill href="#work" variant="ghost">
-                  View selected work
+                  See my work
                 </Pill>
               </motion.div>
             </div>
@@ -758,17 +755,15 @@ export default function Home() {
             <Reveal>
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <MonoTag prefix="#">selected work</MonoTag>
+                  <MonoTag prefix="#">work</MonoTag>
                   <h2 className="mt-6 font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
-                    Shipping systems,
-                    <br />
-                    not demos.
+                    Selected projects.
                     <Cursor />
                   </h2>
                 </div>
                 <p className="max-w-xs font-mono text-xs leading-relaxed text-ink/45">
-                  # production-grade work across agent orchestration,
-                  reinforcement learning, and full-stack delivery
+                  Agent orchestration, reinforcement learning, and
+                  full-stack delivery — each with a repo you can read.
                 </p>
               </div>
             </Reveal>
@@ -811,7 +806,7 @@ export default function Home() {
                           flipped && "lg:order-1",
                         )}
                       >
-                        <MonoTag prefix="$">{project.subtitle}</MonoTag>
+                        <MonoTag prefix="#">{project.subtitle}</MonoTag>
                         <h3 className="mt-6 font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
                           {project.title}
                         </h3>
@@ -875,14 +870,14 @@ export default function Home() {
             <Reveal>
               <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                 <div>
-                  <MonoTag prefix="#">capabilities</MonoTag>
+                  <MonoTag prefix="#">stack</MonoTag>
                   <h2 className="mt-6 font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
-                    The toolkit.
+                    My stack.
                     <Cursor />
                   </h2>
                 </div>
                 <p className="max-w-xs font-mono text-xs leading-relaxed text-ink/45">
-                  # a deliberately narrow stack, chosen for depth over breadth
+                  Languages and tools I use day to day.
                 </p>
               </div>
             </Reveal>
@@ -1000,17 +995,16 @@ export default function Home() {
                 </h2>
                 <div className="mt-8 space-y-5 text-[15px] leading-relaxed text-ink/60">
                   <p>
-                    I engineer the systems that make AI work in production. From
-                    retrieval pipelines that serve millions of queries to
-                    training infrastructure that scales across GPU clusters, I
-                    focus on the gap between a working prototype and a reliable
-                    service.
+                    I build the systems around AI models — the APIs, agents,
+                    and infrastructure that make them usable in production. My
+                    focus is the unglamorous part: turning a working prototype
+                    into something reliable enough to ship.
                   </p>
                   <p>
-                    My work spans the full backend stack: distributed systems,
-                    data pipelines, API design, and ML infrastructure. I care
-                    about making things fast, observable, and boring in the
-                    best possible way.
+                    My work spans agent orchestration, reinforcement learning,
+                    and full-stack backend. I care about the fundamentals —
+                    speed, observability, and code that&apos;s still easy to
+                    change six months later.
                   </p>
                 </div>
                 <div className="mt-9">
@@ -1044,15 +1038,15 @@ export default function Home() {
             <Reveal>
               <MonoTag prefix="#">contact</MonoTag>
               <h2 className="mx-auto mt-7 max-w-3xl font-display text-[clamp(2.4rem,7vw,5.5rem)] font-medium leading-[1.05] tracking-tight text-ink">
-                Let&apos;s build something{" "}
+                Let&apos;s talk about what you&apos;re{" "}
                 <span className="bg-gradient-to-r from-[#1d4ed8] to-[#60a5fa] bg-clip-text text-transparent">
-                  intelligent.
+                  building.
                 </span>
                 <Cursor />
               </h2>
               <p className="mx-auto mt-7 max-w-md font-mono text-xs leading-relaxed text-ink/50">
-                $ open-to-role: AI / backend engineering — and people who want
-                to ship reliable ML systems
+                Open to AI / backend engineering roles. If you&apos;re hiring
+                or building something, my inbox is open.
               </p>
               <div className="mt-10 flex justify-center">
                 <Pill href="mailto:harshitbatra2005@gmail.com">
